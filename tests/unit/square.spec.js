@@ -49,4 +49,10 @@ describe('Square.vue', () => {
     })
     expect(wrapper.attributes().disabled).toBeUndefined()
   })
+
+  it('fire click event', () => {
+    const wrapper = shallowMount(Square)
+    wrapper.vm.click()
+    expect(wrapper.emitted().click).toBeTruthy()
+  })
 })
