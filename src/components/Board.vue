@@ -1,11 +1,16 @@
 <template>
     <div class="board">
+        <div v-for="row in 3" :key="row" class="board-row">
+            <Square v-for="col in 3" :key="indexByRow(col, row)" />
+        </div>
     </div>
 </template>
 
 <script>
+  import Square from './Square'
   export default {
     name: 'Board',
+    components: { Square },
     props: {
       squares: Array
     },

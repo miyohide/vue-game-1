@@ -23,4 +23,12 @@ describe('Board.vue', () => {
       expect(wrapper.vm.indexByRow(3, 3)).toEqual(8)
     })
   })
+
+  it('render 9 square tags', () => {
+    const wrapper = shallowMount(Board, {
+      propsData: { squares: Array(9).fill(null) }
+    })
+    // shallowMountにしているのでsquareタグではなくsquare-stubタグ
+    expect(wrapper.findAll('square-stub').length).toBe(9)
+  })
 })
