@@ -3,6 +3,7 @@
         <div v-for="row in 3" :key="row" class="board-row">
             <Square v-for="col in 3" :key="indexByRow(col, row)"
                     :id="'square' + indexByRow(col, row)"
+                    :value="squares[indexByRow(col, row)]"
             />
         </div>
     </div>

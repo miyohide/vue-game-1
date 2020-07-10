@@ -40,4 +40,14 @@ describe('Board.vue', () => {
       expect(wrapper.find('#square' + i).exists()).toBeTruthy()
     }
   })
+
+  it('render 9 square tags with value', () => {
+    const wrapper = shallowMount(Board, {
+      propsData: { squares: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'] }
+    })
+    for (let i = 0; i < 9; i++) {
+      // 65 は'A'のUnicodeの文字コード番号
+      expect(wrapper.find('#square' + i).attributes().value).toBe(String.fromCharCode(i + 65))
+    }
+  })
 })
