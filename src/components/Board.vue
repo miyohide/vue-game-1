@@ -4,6 +4,7 @@
             <Square v-for="col in 3" :key="indexByRow(col, row)"
                     :id="'square' + indexByRow(col, row)"
                     :value="squares[indexByRow(col, row)]"
+                    :disabled="!!winner"
             />
         </div>
     </div>
@@ -15,7 +16,8 @@
     name: 'Board',
     components: { Square },
     props: {
-      squares: Array
+      squares: Array,
+      winner: Array
     },
     methods: {
       /* colは横、rowは縦。返るのは箱の中の値

@@ -50,4 +50,30 @@ describe('Board.vue', () => {
       expect(wrapper.find('#square' + i).attributes().value).toBe(String.fromCharCode(i + 65))
     }
   })
+
+  describe('disabled', () => {
+    it('when winner has array, disabled is true', () => {
+      const wrapper = shallowMount(Board, {
+        propsData: {
+          squares: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+          winner: [1, 2, 3]
+        }
+      })
+      for (let i = 0; i < 9; i++) {
+        expect(wrapper.find('#square' + i).attributes().disabled).toBe('true')
+      }
+    })
+
+    it('when winner is undefined, disabled is false', () => {
+      const wrapper = shallowMount(Board, {
+        propsData: {
+          squares: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+          winner: undefined
+        }
+      })
+      for (let i = 0; i < 9; i++) {
+        expect(wrapper.find('#square' + i).attributes().disabled).toBeUndefined()
+      }
+    })
+  })
 })
