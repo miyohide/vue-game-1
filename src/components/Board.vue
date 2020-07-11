@@ -5,6 +5,7 @@
                     :id="'square' + indexByRow(col, row)"
                     :value="squares[indexByRow(col, row)]"
                     :disabled="!!winner"
+                    :winner="!!winner && winner.includes(indexByRow(col, row))"
             />
         </div>
     </div>

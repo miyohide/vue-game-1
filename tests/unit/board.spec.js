@@ -76,4 +76,26 @@ describe('Board.vue', () => {
       }
     })
   })
+
+  describe('winner', () => {
+    it('when winner has array, winner attribute is true', () => {
+      const all_list = [...Array(9).keys()]
+      const winner_list = [0, 1, 2]
+      const non_winner_list = all_list.filter(item =>
+        winner_list.indexOf(item) === -1
+      )
+      const wrapper = shallowMount(Board, {
+        propsData: {
+          squares: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+          winner: winner_list
+        }
+      })
+      for (const i of winner_list) {
+        expect(wrapper.find('#square' + i).attributes().winner).toBe('true')
+      }
+      for (const i of non_winner_list) {
+        expect(wrapper.find('#square' + i).attributes().winner).toBeUndefined()
+      }
+    })
+  })
 })
