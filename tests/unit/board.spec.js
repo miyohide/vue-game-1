@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Board from '../../src/components/Board'
 
 describe('Board.vue', () => {
@@ -97,5 +97,16 @@ describe('Board.vue', () => {
         expect(wrapper.find('#square' + i).attributes().winner).toBeUndefined()
       }
     })
+  })
+
+  it('fire click event', () => {
+    const wrapper = mount(Board, {
+      propsData: { squares: Array(9).fill(null) }
+    })
+    for (let i = 0; i < 9; i++) {
+      const square = wrapper.find('#square' + i)
+      square.vm.click()
+      expect(square.emitted().click).toBeTruthy()
+    }
   })
 })
