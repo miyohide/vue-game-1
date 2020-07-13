@@ -37,4 +37,6 @@
 </script>
 
 <style scoped>
+    .board {}
+    .board-row {}
 </style>
