@@ -16,4 +16,32 @@ describe('Game.vue', () => {
     expect(wrapper.vm.currentPlayer).toBe('X')
     expect(wrapper.vm.winner).toBeNull()
   })
+
+  describe('hasWinner', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = shallowMount(Game)
+    })
+
+    it('return true if aligned horizontally', () => {
+      wrapper.setData({
+        squares: ['O', 'O', 'O', 'X', 'X', '1', '2', 'X', 'X']
+      })
+      expect(wrapper.vm.hasWinner()).toBeTruthy()
+    })
+
+    it('return true if aligned vertically', () => {
+      wrapper.setData({
+        squares: ['O', 'X', 'O', '1', 'X', '1', '2', 'X', 'X']
+      })
+      expect(wrapper.vm.hasWinner()).toBeTruthy()
+    })
+
+    it('return false if not aligned', () => {
+      wrapper.setData({
+        squares: ['O', 'X', 'O', '1', 'O', '1', '2', 'X', 'Y']
+      })
+      expect(wrapper.vm.hasWinner()).toBeFalsy()
+    })
+  })
 })

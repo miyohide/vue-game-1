@@ -48,6 +48,29 @@
         this.stepNumber = 0
         this.currentPlayer = 'X'
         this.winner = null
+      },
+      hasWinner() {
+        if (this.winner) {
+          return true
+        }
+        // 勝ちパターン
+        const winMatches = [
+          [0, 1, 2], [3, 4, 5], [6, 7, 8], // 横に揃ったパターン
+          [0, 3, 6], [1, 4, 7], [2, 5, 8], // 縦に揃ったパターン
+          [0, 4, 8], [2, 4, 6] // 斜めに揃ったパターン
+        ]
+
+        for (let i = 0; i < winMatches.length; i++) {
+          const [a, b, c] = winMatches[i]
+          if (this.squares[a]
+            && this.squares[a] === this.squares[b]
+            && this.squares[a] === this.squares[c]
+          ) {
+            this.winner = [a, b, c]
+            return true
+          }
+        }
+        return false
       }
     }
   }
