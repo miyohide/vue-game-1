@@ -71,6 +71,19 @@
           }
         }
         return false
+      },
+      click (i) {
+        // 値があったりすでに勝者が決まっている場合は何もしない
+        if (this.squares[i] || this.winner) {
+          return
+        }
+        // Vueにおいて配列に対しては$setを使って変更を通知する
+        // see. https://jp.vuejs.org/v2/guide/reactivity.html#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6
+        this.$set(this.squares, i, this.currentPlayer)
+        if (!this.hasWinner()) {
+          this.stepNumber++
+          this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X'
+        }
       }
     }
   }

@@ -44,4 +44,47 @@ describe('Game.vue', () => {
       expect(wrapper.vm.hasWinner()).toBeFalsy()
     })
   })
+
+  describe('click', () => {
+    let wrapper
+    beforeEach(() => {
+      wrapper = shallowMount(Game)
+    })
+
+    it('set a value to square[i]', () => {
+      wrapper.vm.click(0)
+      expect(wrapper.vm.squares[0]).toBe('X')
+      expect(wrapper.vm.stepNumber).toBe(1)
+      expect(wrapper.vm.currentPlayer).toBe('O')
+    })
+
+    it('change currentPlayer O -> X', () => {
+      wrapper.setData({
+        currentPlayer: 'O'
+      })
+      wrapper.vm.click(0)
+      expect(wrapper.vm.squares[0]).toBe('O')
+      expect(wrapper.vm.stepNumber).toBe(1)
+      expect(wrapper.vm.currentPlayer).toBe('X')
+    })
+
+    it('when click the not null place, not change currentPlayer and stepNumber', () => {
+      wrapper.setData({
+        squares: ['X', null, null, null, null, null, null, null, null]
+      })
+      wrapper.vm.click(0)
+      expect(wrapper.vm.squares[0]).toBe('X')
+      expect(wrapper.vm.stepNumber).toBe(0)
+      expect(wrapper.vm.currentPlayer).toBe('X')
+    })
+
+    it('when winner is not null, not change currentPlayer and stepNumber', () => {
+      wrapper.setData({
+        winner: [0, 1, 2]
+      })
+      wrapper.vm.click(0)
+      expect(wrapper.vm.stepNumber).toBe(0)
+      expect(wrapper.vm.currentPlayer).toBe('X')
+    })
+  })
 })
