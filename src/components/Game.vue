@@ -5,7 +5,7 @@
                 <h1>Sample Game</h1>
             </div>
 
-            <board :squares="squares" />
+            <board :squares="squares" @click="click" />
 
             <div class="game-info">
                 <p v-if="stepNumber === 0">
