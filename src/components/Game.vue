@@ -14,11 +14,11 @@
                 <p v-else-if="!!winner">
                     勝者は
                     <b :class="currentPlayer">{{ currentPlayer }}</b>
-                    <button>新しいゲームを開始</button>
+                    <button @click="restart">新しいゲームを開始</button>
                 </p>
                 <p v-else-if="stepNumber > 8">
                     引き分け
-                    <button>新しいゲームを開始</button>
+                    <button @click="restart">新しいゲームを開始</button>
                 </p>
                 <p v-else>
                     <b :class="currentPlayer">{{ currentPlayer }}</b>
