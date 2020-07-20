@@ -42,6 +42,14 @@
 </script>
 
 <style scoped>
-    .board {}
-    .board-row {}
+    .board {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .board-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+    }
 </style>
