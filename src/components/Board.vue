@@ -43,6 +43,8 @@
 
 <style scoped>
     .board {
+        width: 65vmin;
+        height: 65vmin;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, 1fr);
