@@ -24,11 +24,15 @@
 
 <style scoped>
     .square {
+        background-color: whitesmoke;
+        font-size: 15vmin;
     }
     .square.winner {
     }
     .square.X {
+        color: darkorange;
     }
     .square.O {
+        color: darkblue;
     }
 </style>
