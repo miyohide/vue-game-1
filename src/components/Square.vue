@@ -28,6 +28,7 @@
         font-size: 15vmin;
     }
     .square.winner {
+        background-color: darkred;
     }
     .square.X {
         color: darkorange;
