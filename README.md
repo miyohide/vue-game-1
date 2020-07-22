@@ -1,24 +1,6 @@
 # vue-game-1
 
-## Project setup
-```
-yarn install
-```
+Vue.jsの勉強のためにVue.js Examplesから以下のものをベースに実装しました。
+https://vuejsexamples.com/simple-example-of-tic-tac-toe-built-with-vue/
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+あわせてテストも実装しています。
